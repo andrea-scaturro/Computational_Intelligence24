@@ -12,19 +12,19 @@ Quixo is an abstract board game for two players, where the objective is to align
 
 The project is organized as follows:
 
-/quixo  
-│  
-├── main.py                    # Script principale per eseguire partite tra agenti  
-├── game.py                    # Implementazione del gioco Quixo  
-├── players                    # Cartella contenente gli agenti implementati  
-│   ├── randomPlayer.py        # Agente che gioca in modo casuale  
-│   ├── myPlayer.py            # Agente "MyPlayer" che gioca con una strategia personalizzata  
-│   ├── minmaxPlayer.py        # Agente basato su Minimax con potatura alpha-beta  
-│   ├── montecarloPlayer.py    # Agente basato su Monte Carlo Tree Search  
-│   └── qlearningPlayer.py     # Agente basato su Q-learning  
-└── impl  
-    ├── qlearning.py           # Script per l'addestramento del Q-learning  
-    └── Qtable_Player*.txt     # Tabelle Q generate durante l'addestramento  
+        /quixo  
+        │  
+        ├── main.py                    # Script principale per eseguire partite tra agenti  
+        ├── game.py                    # Implementazione del gioco Quixo  
+        ├── players                    # Cartella contenente gli agenti implementati  
+        │   ├── randomPlayer.py        # Agente che gioca in modo casuale  
+        │   ├── myPlayer.py            # Agente "MyPlayer" che gioca con una strategia personalizzata  
+        │   ├── minmaxPlayer.py        # Agente basato su Minimax con potatura alpha-beta  
+        │   ├── montecarloPlayer.py    # Agente basato su Monte Carlo Tree Search  
+        │   └── qlearningPlayer.py     # Agente basato su Q-learning  
+        └── impl  
+            ├── qlearning.py           # Script per l'addestramento del Q-learning  
+            └── Qtable_Player*.txt     # Tabelle Q generate durante l'addestramento  
 
 
 
