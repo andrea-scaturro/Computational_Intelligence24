@@ -2,7 +2,7 @@ import random
 from game import Game, Move, Player
 from copy import deepcopy
 
-# Il giocatore utilizza la tecnica di simulazione Monte Carlo per decidere le sue mosse
+
 class MonteCarloPlayer(Player):
     def __init__(self, num_simulations=500, max_selected_moves=40) -> None:
         super().__init__()
