@@ -70,7 +70,7 @@ class QLearning:
 if __name__ == '__main__':
     # Training Player 0
     q_agent = QLearning(0.5, 0.95, 1, 0)  # Inizializza l'agente come Player 0
-    num_games = 100000
+    num_games = 5000
     gamma_epsilon = 0.9999
     min_eps = 0.15
 

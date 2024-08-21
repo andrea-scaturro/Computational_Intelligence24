@@ -14,7 +14,7 @@ if __name__ == '__main__':
     g.print()
     
     # Inizializzazione dei giocatori
-    player0 = MonteCarloPlayer()  # Giocatore 0
+    player0 = QLearningPlayer(0)  # Giocatore 0
     player1 = RandomPlayer()       # Giocatore 1
     
     winner = g.play(player0, player1)  # Gioca una partita
