@@ -13,8 +13,8 @@ if __name__ == '__main__':
     g = Game(showPrint=True)    
     g.print()
     
-    # Inizializzazione dei giocatori
-    player0 = QLearningPlayer(0)  # Giocatore 0
+    
+    player0 = MonteCarloPlayer()  # Giocatore 0
     player1 = RandomPlayer()       # Giocatore 1
     
     winner = g.play(player0, player1)  # Gioca una partita
@@ -24,21 +24,24 @@ if __name__ == '__main__':
 
     
 
-    # win0 =0
-    # win1 =0
-    # nGame = 1000
-    # for game in tqdm(range(nGame)):
-    #     g = Game(showPrint = False)
 
-    #     player0 = QLearningPlayer(1)
-    #     player1 = RandomPlayer()
-    #     winner = g.play(player0, player1)
+    win0 =0
+    win1 =0
+    nGame = 20
+    
+
+    for game in tqdm(range(nGame)):
+        g = Game(showPrint = False)
+
+        player0 = MonteCarloPlayer()
+        player1 = RandomPlayer()
+        winner = g.play(player0, player1)
         
-    #     if winner:
-    #         win1+=1
-    #     else: 
-    #         win0+=1
+        if winner:
+            win1+=1
+        else: 
+            win0+=1
         
-    # print("\nResult:")
-    # print("\tWin Rate Player0: {:.2f}%".format((win0 / nGame) * 100))  
-    # print("\tWin Rate Player1: {:.2f}%".format((win1 / nGame) * 100)) 
+    print("\nResult:")
+    print("\tWin Rate Player0: {:.2f}%".format((win0 / nGame) * 100))  
+    print("\tWin Rate Player1: {:.2f}%".format((win1 / nGame) * 100)) 

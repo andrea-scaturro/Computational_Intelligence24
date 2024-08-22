@@ -38,6 +38,8 @@ class Game(object):
         self._board = np.ones((5, 5), dtype=np.uint8) * -1
         self.current_player_idx = 1
         self.showPrint = showPrint
+        self.num_playes=0
+
         
 
     def get_board(self) -> np.ndarray:
@@ -104,7 +106,8 @@ class Game(object):
             # return the relative id
             return self._board[0, -1]
         return -1
-
+    
+    
     def play(self, player1: Player, player2: Player) -> int:
         '''Play the game. Returns the winning player'''
         players = [player1, player2]
@@ -113,12 +116,17 @@ class Game(object):
             self.current_player_idx += 1
             self.current_player_idx %= len(players)
             ok = False
-            while not ok:
-                from_pos, slide = players[self.current_player_idx].make_move(
-                    self)
+            attempts = 0  # Limite di tentativi
+            while not ok and attempts < 10:  # Limite a 10 tentativi
+                from_pos, slide = players[self.current_player_idx].make_move(self)
                 ok = self.__move(from_pos, slide, self.current_player_idx)
+                attempts += 1
+                
             winner = self.check_winner()
         return winner
+
+
+
     
     
 
@@ -127,12 +135,31 @@ class Game(object):
         if player_id > 2:
             return False
         # Oh God, Numpy arrays
+        
         prev_value = deepcopy(self._board[(from_pos[1], from_pos[0])])
+
         acceptable = self.__take((from_pos[1], from_pos[0]), player_id)
         if acceptable:
             acceptable = self.__slide((from_pos[1], from_pos[0]), slide)
             if not acceptable:
                 self._board[(from_pos[1], from_pos[0])] = deepcopy(prev_value)
+        return acceptable
+    
+
+    def move(self, from_pos: tuple[int, int], slide: Move, player_id: int) -> bool:
+        '''Perform a move'''
+
+        if player_id > 2:
+            return False
+        
+        self.num_playes+=1
+
+        prev_value = deepcopy(self._board[(from_pos[0], from_pos[1])])
+        acceptable = self.__take((from_pos[0], from_pos[1]), player_id)
+        if acceptable:
+            acceptable = self.__slide((from_pos[0], from_pos[1]), slide)
+            if not acceptable:
+                self._board[(from_pos[0], from_pos[1])] = deepcopy(prev_value)
         return acceptable
 
     def __take(self, from_pos: tuple[int, int], player_id: int) -> bool:

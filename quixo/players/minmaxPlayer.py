@@ -11,6 +11,7 @@ class MinMaxPlayer(Player):
         # Create a deep copy of the game to explore moves
         temp_game = deepcopy(game)
         move = self.minmax(temp_game)
+        print(move)
         return (move[0], move[1]), move[2]  # Return position and direction of the move
 
     def minmax(self, game: 'Game', depth: int = 0, alpha: float = -np.inf, beta: float = np.inf) -> tuple[tuple[int, int], Move, int]:
